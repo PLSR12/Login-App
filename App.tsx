@@ -1,46 +1,32 @@
-import { StatusBar } from 'expo-status-bar'
+import { StatusBar } from 'react-native'
+
 import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native'
-import { TextField } from './components/Input'
-import { useForm } from 'react-hook-form'
-import { useEffect } from 'react'
+  Inter_400Regular,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_900Black,
+  useFonts,
+} from '@expo-google-fonts/inter'
+
+import { Loading } from './src/components/Loading'
+import { Home } from './src/screens/Home'
 
 export default function App() {
-  const { register, setValue, handleSubmit } = useForm()
-
-  const onSubmit = (data: any) => {
-    console.log(data)
-  }
-
-  useEffect(() => {
-    register('email')
-  }, [register])
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_900Black,
+  })
 
   return (
-    <View style={styles.container}>
-      <Text>Faça Login</Text>
-      <TextField
-        label="Label"
-        onChangeText={(text: any) => setValue('email', text)}
+    <>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
       />
-      <TextInput onChangeText={(text: any) => setValue('email', text)} />
-      <Button title="enviar" onPress={handleSubmit(onSubmit)} />
-      <StatusBar style="auto" />
-    </View>
+      {fontsLoaded ? <Home /> : <Loading />}
+    </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
