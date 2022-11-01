@@ -19,4 +19,8 @@ export const styles = StyleSheet.create({
     borderColor: '#fff',
     paddingLeft: 15,
   },
+  errorMessage: {
+    fontSize: 16,
+    color: 'red',
+  },
 })
