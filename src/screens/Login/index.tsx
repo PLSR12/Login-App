@@ -51,7 +51,10 @@ export function Login({ navigation }: any) {
           navigation.push('Home')
         }, 2500)
       })
-      .catch((error) => Toast.error('Verifique seu email e/ou senha'))
+      .catch((error) => {
+        Toast.error('Verifique seu email e/ou senha')
+        console.log(error)
+      })
   }
 
   useEffect(() => {
