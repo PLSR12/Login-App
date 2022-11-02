@@ -87,7 +87,7 @@ export function Login({ navigation }: any) {
             <ButtonComponent text="Entrar" onPress={handleSubmit(onSubmit)} />
           </View>
           <Text style={styles.textRegister}>
-            Não Possui Conta?
+            Não Possui Conta?{' '}
             <Text
               style={[styles.textRegister, { color: '#8A8989' }]}
               onPress={() => navigation.push('Register')}
