@@ -7,17 +7,17 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   containerItems: {
-    marginTop: '20%',
+    marginTop: '10%',
     marginBottom: '30%',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 25,
   },
   buttonContainer: {
-    marginTop: 97,
+    marginTop: 57,
   },
   textRegister: {
-    marginTop: 85,
+    marginTop: 65,
     fontWeight: '700',
     fontSize: 19,
     lineHeight: 22,
