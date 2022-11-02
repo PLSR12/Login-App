@@ -16,8 +16,6 @@ type UserInput = {
 }
 
 export function Login({ navigation }: any) {
-  const [userData, setUserData] = useState<any>([])
-
   const LoginSchema = yup.object().shape({
     email: yup
       .string()
@@ -48,13 +46,12 @@ export function Login({ navigation }: any) {
       .post('sessions', authData)
       .then((response: any) => {
         Toast.success('Login Realizado')
-        setUserData(response.data)
         AsyncStorage.setItem('userData', JSON.stringify(response.data))
         setTimeout(() => {
           navigation.push('Home')
         }, 2500)
       })
-      .catch((error) => Toast.error('Verifique email e/ou senha'))
+      .catch((error) => Toast.error('Verifique seu email e/ou senha'))
   }
 
   useEffect(() => {
@@ -94,9 +91,6 @@ export function Login({ navigation }: any) {
             >
               Registre-se
             </Text>
-          </Text>
-          <Text style={[styles.textRegister, { color: '#fff', marginLeft: 5 }]}>
-            {Object.keys(userData).length > 0 && `${userData.name} foi logado`}
           </Text>
         </View>
       </View>
