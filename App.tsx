@@ -1,4 +1,6 @@
 import { StatusBar } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import {
   Inter_400Regular,
@@ -9,7 +11,11 @@ import {
 } from '@expo-google-fonts/inter'
 
 import { Loading } from './src/components/Loading'
+import { Login } from './src/screens/Login'
+import { Register } from './src/screens/Register'
 import { Home } from './src/screens/Home'
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,12 +27,28 @@ export default function App() {
 
   return (
     <>
+      <NavigationContainer>
+        {fontsLoaded ? (
+          <Stack.Navigator
+            initialRouteName="Login"
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="Home" component={Home} />
+          </Stack.Navigator>
+        ) : (
+          <Loading />
+        )}
+      </NavigationContainer>
+
       <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Home /> : <Loading />}
     </>
   )
 }
